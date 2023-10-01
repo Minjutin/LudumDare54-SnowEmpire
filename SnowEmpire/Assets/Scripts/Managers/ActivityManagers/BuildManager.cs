@@ -27,7 +27,11 @@ public class BuildManager : MonoBehaviour
             //Take snow
             GameManager.GM.PlayerM.AddSnow(-castlePrice);
         }
-
+        //If no enough money
+        else
+        {
+            StartCoroutine(GameManager.GM.UIM.ShowErrorMessage("You don't have enough snow to build a castle."));
+        }
 
     }
 

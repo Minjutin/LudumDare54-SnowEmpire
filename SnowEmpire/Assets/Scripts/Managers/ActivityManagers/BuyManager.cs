@@ -21,6 +21,10 @@ public class BuyManager : MonoBehaviour
             tile.Buy();
         }
 
+        else
+        {
+            StartCoroutine(GameManager.GM.UIM.ShowErrorMessage("You don't have enough toys to buy this land."));
+        }
 
     }
 }
