@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    //MANAGERS
     public GridManager GridM { get; private set; }
     public MouseManager MouseM { get; private set; }
 
-    public Mode currentMode;
+    public PlayerManager PlayerM { get; private set; }
+
+    public SnowCastleManager SnowM { get; private set; }
+
+    public DigManager DigM { get; private set; }  
+
+
+    //Mode
+    public Mode currentMode = Mode.Build;
 
     public enum Mode { Build, Buy, Dig}
 
@@ -16,11 +26,11 @@ public class GameManager : MonoBehaviour
     {
         GridM = FindObjectOfType<GridManager>();
         MouseM = FindObjectOfType<MouseManager>();
+        PlayerM = FindObjectOfType<PlayerManager>();
+        SnowM = FindObjectOfType<SnowCastleManager>();
+        DigM= FindObjectOfType<DigManager>();
+
+        FindObjectOfType<ChangeMode>().Change(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int x, y;
+    public bool owned = false;
 
+    public int amountOfSnow;
+
+    private void Start()
+    {
+        amountOfSnow = Random.Range(6,11);
+    }
 }

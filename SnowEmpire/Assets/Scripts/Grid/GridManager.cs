@@ -32,6 +32,8 @@ public class GridManager : MonoBehaviour
                 GameObject newTile = Instantiate(tilePrefab, upLeftPos + new Vector3(i, -j, 0), Quaternion.identity);
                 newTile.transform.parent = this.gameObject.transform;
                 newTile.name = "Tile " + i + ", " + j;
+                newTile.GetComponent<Tile>().x = i;
+                newTile.GetComponent<Tile>().x = j;
                 tileGrid.Add((i, j),newTile.GetComponent<Tile>());
             }
         }
@@ -39,9 +41,13 @@ public class GridManager : MonoBehaviour
 
     public Tile GetTileFromPos(float posx, float posy)
     {
+        int x = Mathf.FloorToInt(posx + width / 2);
+        int y = Mathf.FloorToInt(-posy + height / 2);
 
-        int x = Mathf.CeilToInt(upLeftPos.x-posx);
-        int y = Mathf.CeilToInt(upLeftPos.y-posy);
+        //Debug.Log("x: " + posx + ", y: " + posy);
+        //Debug.Log("index: " + x + ", indey: " + y);
+
+
 
         return tileGrid[(x,y)];
     }
