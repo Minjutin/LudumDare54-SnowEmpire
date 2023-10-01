@@ -22,6 +22,8 @@ public class Tile : MonoBehaviour
     public TextMeshPro priceText;
     public SpriteRenderer tunnelSprite;
 
+    public Sprite ownedSprite;
+
     public List<Tile> nextTiles = new();
 
     private void Start()
@@ -33,16 +35,16 @@ public class Tile : MonoBehaviour
         priceText.text = price + "t";
     }
 
-    public void ChangeColor(Color32 newColor)
+    public void ChangeGraphics()
     {
-        GetComponent<SpriteRenderer>().color = newColor;
+        GetComponent<SpriteRenderer>().sprite = ownedSprite;
     }
 
 
     public void Buy()
     {
         owned = true;
-        ChangeColor(new Color32(150, 140, 120, 255));
+        ChangeGraphics();
         amountOfSnow = 0;
         EnablePrice(false);
     }
@@ -57,7 +59,7 @@ public class Tile : MonoBehaviour
 
         if(amountOfSnow == 0)
         {
-            ChangeColor(new Color32(0, 0, 0, 255));
+            GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 255);
             GameManager.GM.GridM.deadTiles++;
         }
     }

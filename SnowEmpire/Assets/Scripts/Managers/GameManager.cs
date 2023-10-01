@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public int lives = 3;
+
+
     //This instance as a static variable.
     public static GameManager GM;
 
     //MANAGERS
+    
     public GridManager GridM { get; private set; }
     public MouseManager MouseM { get; private set; }
 
@@ -55,9 +61,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(GridM.deadTiles > 3 && currentMode != Mode.ATTACK)
+        if(GridM.deadTiles >= lives && currentMode != Mode.ATTACK)
         {
             AttackM.LaunchAttackMode();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MenuScene");
         }
     }
 }

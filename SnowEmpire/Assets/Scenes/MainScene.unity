@@ -1563,7 +1563,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 97d9e489d48cfca43a7343879b792b6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ebc590921c0ffd49b731fdaece3df5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1724,6 +1724,7 @@ MonoBehaviour:
   snowAmount: {fileID: 1728104629}
   toyAmount: {fileID: 1065764925}
   errorMessage: {fileID: 1192126462}
+  buttons: {fileID: 1368458480}
 --- !u!1 &1649421205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,6 +2107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f45122229e221943b788168602ae02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 4
   currentMode: 0
 --- !u!4 &1784290327
 Transform:

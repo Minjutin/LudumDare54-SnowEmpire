@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.75, g: 0.88766205, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2b7bbf5b39f57d544822fcef26b86bab, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,12 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
-  owned: 0
-  builtOn: 0
   amountOfSnow: 0
   price: 0
+  owned: 0
+  builtOn: 0
+  tunneled: 0
+  canBeTunneled: 0
+  canBeBought: 0
   priceText: {fileID: 1814490954966460423}
   tunnelSprite: {fileID: 6054856910355479777}
+  ownedSprite: {fileID: 21300000, guid: b87767c3210946d4d984d73d1c31be47, type: 3}
+  nextTiles: []
 --- !u!1 &7693453620914732234
 GameObject:
   m_ObjectHideFlags: 0
