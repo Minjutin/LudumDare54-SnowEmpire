@@ -12,15 +12,7 @@ public class GridManager : MonoBehaviour
 
     Vector3 upLeftPos;
 
-
-    void Awake()
-    {
-        CreateGrid();
-
-
-    }
-
-    void CreateGrid()
+    public void CreateGrid()
     {
 
         upLeftPos = new Vector3(-(width - 1) / 2, (height - 1) / 2, 0);

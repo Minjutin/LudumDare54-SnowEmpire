@@ -9,22 +9,52 @@ public class BuyManager : MonoBehaviour
     public void TryToBuy(Tile tile)
     {
 
-        if(tile.price <= GameManager.GM.PlayerM.toysOwned)
+        if (tile.canBeBought)
         {
-            //Add snow to player
-            GameManager.GM.PlayerM.AddSnow(tile.amountOfSnow);
+            if (tile.price <= GameManager.GM.PlayerM.toysOwned)
+            {
+                //Add snow to player
+                GameManager.GM.PlayerM.AddSnow(tile.amountOfSnow);
 
-            //Take toys
-            GameManager.GM.PlayerM.AddToys(-tile.price);
+                //Take toys
+                GameManager.GM.PlayerM.AddToys(-tile.price);
 
-            //Buy tile
-            tile.Buy();
+                //Buy tile
+                tile.Buy();
+            }
+
+            else
+            {
+                StartCoroutine(GameManager.GM.UIM.ShowErrorMessage("You don't have enough toys to buy this land."));
+            }
         }
 
-        else
+    }
+
+    public void CheckWhatCanBeBought()
+    {
+        //Check if there is castle/land close enough
+        foreach (KeyValuePair<(int, int), Tile> tile in GameManager.GM.GridM.tileGrid)
         {
-            StartCoroutine(GameManager.GM.UIM.ShowErrorMessage("You don't have enough toys to buy this land."));
+            tile.Value.canBeTunneled = false;
+
+            if (tile.Value.amountOfSnow > 0)
+            {
+                //Check if it is owned
+                foreach (Tile neighbor in tile.Value.nextTiles)
+                {
+                    //If owned, there is no further problems
+                    if (neighbor.owned || neighbor.tunneled)
+                    {
+                        tile.Value.canBeBought= true;
+                        break;
+                    }
+                }
+                tile.Value.EnablePrice(true);
+            }
+
         }
+
 
     }
 }

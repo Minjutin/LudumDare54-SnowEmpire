@@ -13,7 +13,10 @@ public class Tile : MonoBehaviour
     public bool owned = false;
     public bool builtOn = false;
     public bool tunneled = false; 
+
+    //Can be
     public bool canBeTunneled = false;
+    public bool canBeBought = false;
 
     [Header("UI elements")]
     public TextMeshPro priceText;
@@ -25,7 +28,7 @@ public class Tile : MonoBehaviour
     {
 
         //Get random price and snow amount
-        amountOfSnow = Random.Range(6,11);
+        amountOfSnow = Random.Range(1,4) + Random.Range(1, 4);
         price = Random.Range(1,4) + Random.Range(0, 4);
         priceText.text = price + "t";
     }
@@ -63,7 +66,7 @@ public class Tile : MonoBehaviour
 
     public void EnablePrice(bool enabled)
     {
-        if (owned)
+        if (owned || !canBeBought || amountOfSnow < 1)
         {
             enabled = false;
         }

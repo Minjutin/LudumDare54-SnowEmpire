@@ -20,7 +20,7 @@ public class ChangeMode : MonoBehaviour
             case 0: //build
                 break;
             case 1: //buy
-
+                GameManager.GM.BuyM.CheckWhatCanBeBought();
                 break;
             case 2: //dig
                 GameManager.GM.DigM.CheckWhatCanBeDigged();

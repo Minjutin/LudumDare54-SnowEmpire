@@ -43,4 +43,12 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<ChangeMode>().Change(0);
     }
 
+
+    //START GAME, INITIALIZE START POSITION
+    private void Start()
+    {
+        GridM.CreateGrid();
+        GridM.tileGrid[(1, 3)].Buy();
+        BuildM.SpawnCastle(GridM.tileGrid[(1,3)]);
+    }
 }

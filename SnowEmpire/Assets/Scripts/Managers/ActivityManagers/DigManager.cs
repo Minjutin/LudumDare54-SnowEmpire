@@ -46,27 +46,32 @@ public class DigManager : MonoBehaviour
         {
             tile.Value.canBeTunneled = false;
 
-            //Check if it is owned
-            foreach (Tile neighbor in tile.Value.nextTiles)
-            {
-                //If owned, there is no further problems
-                if (neighbor.owned)
-                {
-                    tile.Value.canBeTunneled = true;
-                    break;
-                }
 
-                //If not owned,
-                else if (neighbor.tunneled && neighbor.amountOfSnow > 0)
+            if (tile.Value.amountOfSnow > 0)
+            {
+                //Check if it is owned
+                foreach (Tile neighbor in tile.Value.nextTiles)
                 {
-                    foreach (Tile neighneighbor in neighbor.nextTiles)
+                    //If owned, there is no further problems
+                    if (neighbor.owned)
                     {
-                        if (neighneighbor.builtOn)
+                        tile.Value.canBeTunneled = true;
+                        break;
+                    }
+
+                    //If not owned,
+                    else if (neighbor.tunneled && neighbor.amountOfSnow > 0)
+                    {
+                        foreach (Tile neighneighbor in neighbor.nextTiles)
                         {
-                            tile.Value.canBeTunneled = true;
+                            if (neighneighbor.builtOn)
+                            {
+                                tile.Value.canBeTunneled = true;
+                            }
                         }
                     }
-                }  
+                }
+
             }
             tile.Value.EnableCanBeTunneled(true);
         }

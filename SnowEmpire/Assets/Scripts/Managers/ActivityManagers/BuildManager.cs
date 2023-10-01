@@ -18,11 +18,7 @@ public class BuildManager : MonoBehaviour
         if (castlePrice <= GameManager.GM.PlayerM.snowOwned)
         {
             //Spawn
-            GameObject castle = Instantiate(castlePrefab, tile.transform.position, Quaternion.identity);
-            castle.transform.parent = castles;
-            castle.name = "Castle " + tile.x + ", " + tile.y;
-
-            tile.builtOn = true;
+            SpawnCastle(tile);
 
             //Take snow
             GameManager.GM.PlayerM.AddSnow(-castlePrice);
@@ -35,4 +31,13 @@ public class BuildManager : MonoBehaviour
 
     }
 
+    //You can only build if there is a tunnel or caste in next to it.
+    public void SpawnCastle(Tile tile)
+    {
+        GameObject castle = Instantiate(castlePrefab, tile.transform.position, Quaternion.identity);
+        castle.transform.parent = castles;
+        castle.name = "Castle " + tile.x + ", " + tile.y;
+
+        tile.builtOn = true;
+    }
 }
