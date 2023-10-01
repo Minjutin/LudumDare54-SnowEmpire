@@ -5,18 +5,32 @@ using UnityEngine;
 
 public class ChangeMode : MonoBehaviour
 {
-    GameManager GM;
-    TextMeshProUGUI modeText;
 
-    private void Awake()
-    {
-        GM = FindObjectOfType<GameManager>();
-    }
-    
+    public TextMeshProUGUI modeText;
+
+
     public void Change(int newMode)
     {
-        GM.currentMode = (GameManager.Mode)newMode;
-        modeText.text = newMode.ToString();
+        GameManager.GM.currentMode = (GameManager.Mode)newMode;
+        modeText.text = ((GameManager.Mode)newMode).ToString();
+
+        //Iterate every tile
+        foreach(KeyValuePair<(int,int), Tile> tile in GameManager.GM.GridM.tileGrid)
+        {
+            tile.Value.EnablePrice(newMode == 1);
+        }
+
+        //switch (newMode)
+        //{
+        //    case 0: //build
+        //        break;
+        //    case 1: //buy
+
+        //        break;
+        //    case 2: //dig
+        //        break;
+        //}
+
     }
 
 }

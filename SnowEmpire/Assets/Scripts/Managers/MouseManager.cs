@@ -5,14 +5,9 @@ using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
-    GameManager GM;
 
     Tile tileClicked; 
 
-    private void Awake()
-    {
-        GM = FindObjectOfType<GameManager>();
-    }
 
     void Start()
     {
@@ -25,19 +20,19 @@ public class MouseManager : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0) &&
-            mousePos.x < GM.GridM.width * 0.5f && mousePos.x > -GM.GridM.width * 0.5f
-            && mousePos.y < GM.GridM.height * 0.5f && mousePos.y > -GM.GridM.height * 0.5f)
+            mousePos.x < GameManager.GM.GridM.width * 0.5f && mousePos.x > -GameManager.GM.GridM.width * 0.5f
+            && mousePos.y < GameManager.GM.GridM.height * 0.5f && mousePos.y > -GameManager.GM.GridM.height * 0.5f)
         {
-            tileClicked = GM.GridM.GetTileFromPos(mousePos.x, mousePos.y) ;
+            tileClicked = GameManager.GM.GridM.GetTileFromPos(mousePos.x, mousePos.y) ;
 
-            switch (GM.currentMode)
+            switch (GameManager.GM.currentMode)
             {
 
                 case GameManager.Mode.Build:
                     //If player owns the tile they clicked, spawn a castle.
-                    if (tileClicked.owned)
+                    if (tileClicked.owned && !tileClicked.builtOn)
                     {
-                        GM.SnowM.SpawnSnowCastle(tileClicked);
+                        GameManager.GM.BuildM.TryToSpawnSnowCastle(tileClicked);
                     }
                     break;
 
@@ -46,7 +41,7 @@ public class MouseManager : MonoBehaviour
                     //If player doesn't own the tile they clicked, buy the tile.
                     if (!tileClicked.owned)
                     {
-                        tileClicked.owned = true;
+                        GameManager.GM.BuyM.TryToBuy(tileClicked);
                     }
                         
                     break;
@@ -57,7 +52,7 @@ public class MouseManager : MonoBehaviour
                     //If player doesn't own the tile they clicked, dig
                     if (!tileClicked.owned)
                     {
-                        tileClicked.owned = true;
+                        GameManager.GM.DigM.Dig(tileClicked);
                     }
 
                     break;
