@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ChangeMode : MonoBehaviour
+public class ChangeModeViaButtons : MonoBehaviour
 {
 
     public TextMeshProUGUI modeText;

@@ -58,6 +58,7 @@ public class Tile : MonoBehaviour
         if(amountOfSnow == 0)
         {
             ChangeColor(new Color32(0, 0, 0, 255));
+            GameManager.GM.GridM.deadTiles++;
         }
     }
 

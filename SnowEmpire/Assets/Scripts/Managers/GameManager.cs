@@ -20,13 +20,13 @@ public class GameManager : MonoBehaviour
     public UIManager UIM { get; private set; }
 
     public BuyManager BuyM { get; private set; }
+    public AttackManager AttackM { get; private set; }
 
 
     //Mode
     public Mode currentMode = Mode.Build;
 
-    public enum Mode { Build, Buy, Dig}
-
+    public enum Mode { Build, Buy, Dig, ATTACK}
 
     void Awake()
     {
@@ -39,8 +39,9 @@ public class GameManager : MonoBehaviour
         DigM= FindObjectOfType<DigManager>();
         UIM = FindObjectOfType<UIManager>();
         BuyM = FindObjectOfType<BuyManager>();
+        AttackM = FindObjectOfType<AttackManager>();
 
-        FindObjectOfType<ChangeMode>().Change(0);
+        FindObjectOfType<ChangeModeViaButtons>().Change(0);
     }
 
 
@@ -48,7 +49,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GridM.CreateGrid();
-        GridM.tileGrid[(1, 3)].Buy();
-        BuildM.SpawnCastle(GridM.tileGrid[(1,3)]);
+        GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height)/2)].Buy();
+        BuildM.SpawnCastle(GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2)]);
+    }
+
+    private void Update()
+    {
+        if(GridM.deadTiles > 3 && currentMode != Mode.ATTACK)
+        {
+            AttackM.LaunchAttackMode();
+        }
     }
 }

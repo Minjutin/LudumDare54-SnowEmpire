@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI toyAmount;
     [SerializeField] TextMeshProUGUI errorMessage;
 
+    [SerializeField] GameObject buttons;
+
     public void UpdateTexts()
     {
         snowAmount.text = ": "+GameManager.GM.PlayerM.snowOwned;
@@ -24,5 +26,10 @@ public class UIManager : MonoBehaviour
         errorMessage.enabled = true;
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         errorMessage.enabled = false;
+    }
+
+    public void LaunchAttackUI()
+    {
+        buttons.SetActive(false);
     }
 }

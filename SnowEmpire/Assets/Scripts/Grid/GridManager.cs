@@ -6,12 +6,15 @@ public class GridManager : MonoBehaviour
 {
     public Dictionary<(int, int), Tile> tileGrid { get; private set; } = new();
 
+    public int deadTiles = 0;
+
     public float width, height;
 
     [SerializeField] GameObject tilePrefab;
 
     Vector3 upLeftPos;
 
+    //Create tile grid
     public void CreateGrid()
     {
 
@@ -38,6 +41,8 @@ public class GridManager : MonoBehaviour
         }
     }
 
+
+    //Bring tile from certain mouse position. 
     public Tile GetTileFromPos(float posx, float posy)
     {
         int x = Mathf.FloorToInt(posx + width / 2);
