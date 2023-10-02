@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject healthBar, barInsides;
 
+    [Header("HP stuff")]
+    [SerializeField] Sprite angrySprite;
+    [SerializeField] List<Image> hps;
+
+
     public void UpdateTexts()
     {
         snowAmount.text = ""+GameManager.GM.PlayerM.snowOwned;
@@ -21,22 +27,43 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator ShowErrorMessage(string error)
     {
-        errorMessage.enabled = true;
-        errorMessage.text = error;
-        yield return new WaitForSeconds(0.1f);
-        errorMessage.enabled = true;
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        errorMessage.enabled = false;
+        if (FindObjectOfType<Tutorial>().tutorialSkipped)
+        {
+            errorMessage.enabled = true;
+            errorMessage.text = error;
+            yield return new WaitForSeconds(0.1f);
+            errorMessage.enabled = true;
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            errorMessage.enabled = false;
+        }
+
     }
 
     public void LaunchAttackUI()
     {
-        buttons.SetActive(false);
+        buttonsOn(false);
         healthBar.SetActive(true);
     }
 
     public void HealthAmount(float persentage)
     {
         barInsides.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1000.0f*persentage);
+    }
+
+    public void buttonsOn(bool isOn)
+    {
+        buttons.SetActive(isOn);
+    }
+
+    public void EditHps()
+    {
+        for(int i=0; i < GameManager.GM.lives; i++)
+        {
+            if(i < GameManager.GM.GridM.deadTiles)
+            {
+                hps[i].sprite = angrySprite;
+            }
+        }
+
     }
 }

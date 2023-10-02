@@ -48,8 +48,6 @@ public class GameManager : MonoBehaviour
         BuyM = FindObjectOfType<BuyManager>();
         AttackM = FindObjectOfType<AttackManager>();
         EndM = FindObjectOfType<EndManager>();
-
-        FindObjectOfType<ChangeModeViaButtons>().Change(0);
     }
 
 
@@ -58,13 +56,7 @@ public class GameManager : MonoBehaviour
     {
         GridM.CreateGrid();
 
-        //Buy first 2 tiles
-        GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height)/2)].BuyWithoutGraphicChange();
-        GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2+1)].BuyWithoutGraphicChange();
-
-        //Spawn first 2 castles
-        GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2)].builtOn = true;
-        BuildM.SpawnCastle(GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2+1)]);
+        StartCoroutine(FindObjectOfType<Tutorial>().StartTutorial());
     }
 
     private void Update()

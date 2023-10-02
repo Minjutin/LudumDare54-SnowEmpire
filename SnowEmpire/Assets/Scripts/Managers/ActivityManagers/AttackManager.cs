@@ -44,7 +44,8 @@ public class AttackManager : MonoBehaviour
         for(float i = 0; i < 1; i=i+Time.deltaTime/secondsToKill)
         {
             yield return new WaitForSeconds(Time.deltaTime);
-            bully.transform.position = new Vector3(Mathf.Lerp(bullyStartPos.x, GameManager.GM.PlayerM.playerPos.x, i), bullyStartPos.y, 0);
+            bully.transform.position = new Vector3(Mathf.Lerp(bullyStartPos.x, 
+                GameManager.GM.PlayerM.playerPos.x+1, i), bullyStartPos.y, 0);
         }
 
         GameManager.GM.EndM.Lose();

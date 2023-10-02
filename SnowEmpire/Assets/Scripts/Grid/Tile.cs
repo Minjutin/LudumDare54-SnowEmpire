@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class Tile : MonoBehaviour
 {
     public int x, y;
@@ -21,6 +22,7 @@ public class Tile : MonoBehaviour
     [Header("UI elements")]
     public TextMeshPro priceText;
     public TextMeshPro castlePrice;
+    public SpriteRenderer notAvailable;
 
     public SpriteRenderer tunnelSprite;
     public TextMeshPro snowAroundText;
@@ -34,8 +36,13 @@ public class Tile : MonoBehaviour
 
         //Get random price and snow amount
         amountOfSnow = Random.Range(1,3) + Random.Range(1, 3);
-        price = Random.Range(1,4) + Random.Range(0, 4);
-        priceText.text = price + "";
+        ChangePrice(Random.Range(1,4) + Random.Range(0, 4));
+    }
+
+    public void ChangePrice(int newPrice)
+    {
+        price = newPrice;
+        priceText.text = newPrice + "";
     }
 
     public void ChangeGraphics()
@@ -69,8 +76,9 @@ public class Tile : MonoBehaviour
 
         if(amountOfSnow == 0)
         {
-            GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 255);
+            notAvailable.enabled = true;
             GameManager.GM.GridM.deadTiles++;
+            GameManager.GM.UIM.EditHps();
         }
     }
 
@@ -80,7 +88,7 @@ public class Tile : MonoBehaviour
     public void EnablePrice(bool enabled)
     {
         //If owned and castle is bought OR there is no snow left
-        if ( (owned && !canBeBought) || (!owned && !canBeBought)
+        if ( (owned && !canBeBought) || builtOn || (!owned && !canBeBought)
             || (!owned && amountOfSnow < 1))
         {
             enabled = false;

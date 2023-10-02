@@ -22,6 +22,7 @@ public class BuildManager : MonoBehaviour
             //Spawn
             SpawnCastle(tile);
 
+            tile.builtOn = true;
             //Take snow
             tile.EnablePrice(false);
             GameManager.GM.PlayerM.AddSnow(-castlePrice);
