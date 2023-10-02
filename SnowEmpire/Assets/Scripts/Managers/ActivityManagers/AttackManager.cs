@@ -5,6 +5,9 @@ using UnityEngine;
 public class AttackManager : MonoBehaviour
 {
     public GameObject bully, snowballPrefab;
+    [SerializeField] int maxBullyHp = 100, balldamage = 1;
+
+    int currentBullyHp;
 
     [SerializeField] float secondsToKill;
 
@@ -36,6 +39,7 @@ public class AttackManager : MonoBehaviour
    IEnumerator Launch()
    {
         Vector3 bullyStartPos = bully.transform.position;
+        currentBullyHp = maxBullyHp;
 
         for(float i = 0; i < 1; i=i+Time.deltaTime/secondsToKill)
         {
@@ -44,4 +48,10 @@ public class AttackManager : MonoBehaviour
         }
 
    }
+
+    public void EditHealth()
+    {
+        currentBullyHp += -balldamage;
+        GameManager.GM.UIM.HealthAmount((float)currentBullyHp/(float)maxBullyHp);
+    }
 }

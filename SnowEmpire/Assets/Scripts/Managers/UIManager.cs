@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI errorMessage;
 
     [SerializeField] GameObject buttons;
+    [SerializeField] GameObject healthBar, barInsides;
 
     public void UpdateTexts()
     {
@@ -31,5 +32,11 @@ public class UIManager : MonoBehaviour
     public void LaunchAttackUI()
     {
         buttons.SetActive(false);
+        healthBar.SetActive(true);
+    }
+
+    public void HealthAmount(float persentage)
+    {
+        barInsides.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1000.0f*persentage);
     }
 }

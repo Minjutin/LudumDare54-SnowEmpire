@@ -28,6 +28,7 @@ public class Castle : MonoBehaviour
                                                 GameManager.GM.AttackM.bully.transform.position);
             }
 
+            GameManager.GM.AttackM.EditHealth();
             snowBall.transform.position = new Vector3(-17, 0, 0);
             yield return new WaitForSeconds(0.2f);
 
