@@ -28,11 +28,12 @@ public class GameManager : MonoBehaviour
     public BuyManager BuyM { get; private set; }
     public AttackManager AttackM { get; private set; }
 
+    public EndManager EndM { get; private set; }
 
     //Mode
-    public Mode currentMode = Mode.Build;
+    public Mode currentMode = Mode.Dig;
 
-    public enum Mode { Build, Buy, Dig, ATTACK}
+    public enum Mode { Buy = 0, Dig =1, ATTACK = 2}
 
     void Awake()
     {
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         UIM = FindObjectOfType<UIManager>();
         BuyM = FindObjectOfType<BuyManager>();
         AttackM = FindObjectOfType<AttackManager>();
+        EndM = FindObjectOfType<EndManager>();
 
         FindObjectOfType<ChangeModeViaButtons>().Change(0);
     }
@@ -55,9 +57,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GridM.CreateGrid();
+
+        //Buy first 2 tiles
         GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height)/2)].BuyWithoutGraphicChange();
         GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2+1)].BuyWithoutGraphicChange();
-        BuildM.SpawnCastle(GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2)]);
+
+        //Spawn first 2 castles
+        GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2)].builtOn = true;
         BuildM.SpawnCastle(GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2+1)]);
     }
 
@@ -68,9 +74,21 @@ public class GameManager : MonoBehaviour
             AttackM.LaunchAttackMode();
         }
 
+        //Exit the game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("MenuScene");
+            BackToMenu();
         }
+
+        if (AttackM.currentBullyHp < 1)
+        {
+            AttackM.StopAllCoroutines();
+            EndM.Win();
+        }
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }

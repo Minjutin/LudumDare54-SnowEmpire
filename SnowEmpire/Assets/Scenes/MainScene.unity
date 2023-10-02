@@ -1110,6 +1110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6164965009624081888, guid: dba3a5267904ced46948258058ef541a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6376675533657118194, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: barInsides
       value: 
@@ -1142,6 +1146,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.00018310547
       objectReference: {fileID: 0}
+    - target: {fileID: 7303995541343606295, guid: dba3a5267904ced46948258058ef541a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885692092957586182, guid: dba3a5267904ced46948258058ef541a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8033526847208184664, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1040
@@ -1150,8 +1162,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -19.91
       objectReference: {fileID: 0}
+    - target: {fileID: 9068484495860145613, guid: dba3a5267904ced46948258058ef541a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7325471491070346532, guid: dba3a5267904ced46948258058ef541a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dba3a5267904ced46948258058ef541a, type: 3}

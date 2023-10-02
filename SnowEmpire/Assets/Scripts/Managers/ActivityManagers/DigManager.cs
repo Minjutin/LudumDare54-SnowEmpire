@@ -31,6 +31,7 @@ public class DigManager : MonoBehaviour
                     GameManager.GM.PlayerM.AddToys(1);
 
                 StopAllCoroutines();
+                GameManager.GM.UIM.errorMessage.enabled = false; 
                 StartCoroutine(SpawnParticles(tile, true, rand < toyProb));
                 CheckWhatCanBeDigged();
             }

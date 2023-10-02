@@ -9,7 +9,7 @@ public class BuildManager : MonoBehaviour
     public GameObject castlePrefab;
     public Transform castles;
 
-    [SerializeField] int castlePrice = 5;
+    public int castlePrice = 5;
     [SerializeField] Sprite firstCastle;
 
   
@@ -23,6 +23,7 @@ public class BuildManager : MonoBehaviour
             SpawnCastle(tile);
 
             //Take snow
+            tile.EnablePrice(false);
             GameManager.GM.PlayerM.AddSnow(-castlePrice);
         }
         //If no enough money

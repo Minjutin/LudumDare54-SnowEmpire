@@ -7,7 +7,7 @@ public class AttackManager : MonoBehaviour
     public GameObject bully, snowballPrefab;
     [SerializeField] int maxBullyHp = 100, balldamage = 1;
 
-    int currentBullyHp;
+    public int currentBullyHp { get; private set; } = 1000;
 
     [SerializeField] float secondsToKill;
 
@@ -47,6 +47,8 @@ public class AttackManager : MonoBehaviour
             bully.transform.position = new Vector3(Mathf.Lerp(bullyStartPos.x, GameManager.GM.PlayerM.playerPos.x, i), bullyStartPos.y, 0);
         }
 
+        GameManager.GM.EndM.Lose();
+        currentBullyHp = maxBullyHp;
    }
 
     public void EditHealth()
@@ -54,4 +56,6 @@ public class AttackManager : MonoBehaviour
         currentBullyHp += -balldamage;
         GameManager.GM.UIM.HealthAmount((float)currentBullyHp/(float)maxBullyHp);
     }
+
+
 }

@@ -9,11 +9,6 @@ public class MouseManager : MonoBehaviour
     Tile tileClicked; 
 
 
-    void Start()
-    {
-        
-    }
-
 
     void Update()
     {
@@ -28,15 +23,12 @@ public class MouseManager : MonoBehaviour
             switch (GameManager.GM.currentMode)
             {
 
-                case GameManager.Mode.Build:
+                case GameManager.Mode.Buy:
                     //If player owns the tile they clicked, spawn a castle.
                     if (tileClicked.owned && !tileClicked.builtOn)
                     {
                         GameManager.GM.BuildM.TryToSpawnSnowCastle(tileClicked);
                     }
-                    break;
-
-                case GameManager.Mode.Buy:
 
                     //If player doesn't own the tile they clicked, buy the tile.
                     if (!tileClicked.owned)

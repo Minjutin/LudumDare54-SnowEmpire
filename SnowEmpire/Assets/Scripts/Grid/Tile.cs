@@ -20,6 +20,8 @@ public class Tile : MonoBehaviour
 
     [Header("UI elements")]
     public TextMeshPro priceText;
+    public TextMeshPro castlePrice;
+
     public SpriteRenderer tunnelSprite;
     public TextMeshPro snowAroundText;
 
@@ -47,7 +49,7 @@ public class Tile : MonoBehaviour
         owned = true;
         amountOfSnow = 0;
         ChangeGraphics();     
-        EnablePrice(false);
+        EnablePrice(true);
     }
 
     public void BuyWithoutGraphicChange()
@@ -77,17 +79,41 @@ public class Tile : MonoBehaviour
 
     public void EnablePrice(bool enabled)
     {
-        if (owned || !canBeBought || amountOfSnow < 1)
+        //If owned and castle is bought OR there is no snow left
+        if ( (owned && !canBeBought) || (!owned && !canBeBought)
+            || (!owned && amountOfSnow < 1))
         {
             enabled = false;
         }
-        priceText.gameObject.SetActive(enabled);
-        if (price > GameManager.GM.PlayerM.toysOwned)
+
+        //If owned but no castle
+        if (owned && canBeBought)
         {
-            priceText.color = Color.red;
+            priceText.gameObject.SetActive(false);
+            //Debug.Log(enabled);
+            castlePrice.gameObject.SetActive(enabled);
+            if (GameManager.GM.BuildM.castlePrice > GameManager.GM.PlayerM.snowOwned)
+            {
+                castlePrice.color = Color.red;
+            }
+            else
+                castlePrice.color = Color.green;
         }
-        else
-            priceText.color = Color.green;
+
+        //If not owned
+        if (!owned)
+        {
+            castlePrice.gameObject.SetActive(false);
+            priceText.gameObject.SetActive(enabled);
+            if (price > GameManager.GM.PlayerM.toysOwned)
+            {
+                priceText.color = Color.red;
+            }
+            else
+                priceText.color = Color.green;
+        }
+
+
 
     }
 

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1201993239176186126}
   - component: {fileID: 1993939421910096892}
   - component: {fileID: 6982488564638806449}
+  - component: {fileID: 9166901935750450803}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -138,4 +139,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bully: {fileID: 0}
   snowballPrefab: {fileID: 7055724068395094606, guid: 7f2e7bf4fe9664a40bd0471145180f91, type: 3}
+  maxBullyHp: 100
+  balldamage: 1
   secondsToKill: 20
+--- !u!114 &9166901935750450803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262003070669037699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc6fbb9b139bd24bb0f4285d828ccf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

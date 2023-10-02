@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI snowAmount;
     [SerializeField] TextMeshProUGUI toyAmount;
-    [SerializeField] TextMeshProUGUI errorMessage;
+    public TextMeshProUGUI errorMessage;
 
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject healthBar, barInsides;

@@ -17,12 +17,10 @@ public class ChangeModeViaButtons : MonoBehaviour
 
         switch (newMode)
         {
-            case 0: //build
-                break;
-            case 1: //buy
+            case 0: //buy
                 GameManager.GM.BuyM.CheckWhatCanBeBought();
                 break;
-            case 2: //dig
+            case 1: //dig
                 GameManager.GM.DigM.CheckWhatCanBeDigged();
                 break;
         }
@@ -30,8 +28,8 @@ public class ChangeModeViaButtons : MonoBehaviour
         //Iterate every tile
         foreach (KeyValuePair<(int, int), Tile> tile in GameManager.GM.GridM.tileGrid)
         {
-            tile.Value.EnablePrice(newMode == 1);
-            tile.Value.EnableCanBeTunneled(newMode == 2);
+            tile.Value.EnablePrice(newMode == 0);
+            tile.Value.EnableCanBeTunneled(newMode == 1);
         }
 
     }
