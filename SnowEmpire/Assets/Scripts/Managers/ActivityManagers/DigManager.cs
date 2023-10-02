@@ -5,6 +5,9 @@ using UnityEngine;
 public class DigManager : MonoBehaviour
 {
     [SerializeField] int toyProb;
+    [SerializeField] float dropTime = 0.5f;
+
+    [SerializeField] GameObject snowBall, toy;
 
     // Update is called once per frame
     public void Dig(Tile tile)
@@ -27,6 +30,8 @@ public class DigManager : MonoBehaviour
                 if (rand < toyProb)
                     GameManager.GM.PlayerM.AddToys(1);
 
+                StopAllCoroutines();
+                StartCoroutine(SpawnParticles(tile, true, rand < toyProb));
                 CheckWhatCanBeDigged();
             }
         }
@@ -79,4 +84,40 @@ public class DigManager : MonoBehaviour
 
     }
 
+    IEnumerator SpawnParticles(Tile tile, bool isSnow, bool isSoldier)
+    {
+        toy.transform.position = new Vector3(-16, 0, 0);
+        snowBall.transform.position = new Vector3(-16, 0, 0);
+
+        if (isSoldier)
+            toy.transform.position = tile.transform.position;
+
+        if(isSnow)
+            snowBall.transform.position = tile.transform.position;
+        
+        for(float i = 0; i<1; i+=Time.deltaTime/dropTime)
+        {
+            yield return new WaitForSeconds(Time.deltaTime);
+            snowBall.transform.position = Bezier(i, tile.transform.position, 
+                                            tile.transform.position + new Vector3(0.2f, 1),
+                                            tile.transform.position + new Vector3(0.4f, 0));
+            if (isSoldier)
+            {
+                toy.transform.position = Bezier(i, tile.transform.position,
+                                 tile.transform.position + new Vector3(-0.2f, 1),
+                                 tile.transform.position + new Vector3(-0.4f, 0));
+            }
+ 
+        }
+        yield return new WaitForSeconds(0.2f);
+        toy.transform.position = new Vector3(-16, 0, 0);
+        snowBall.transform.position = new Vector3(-16, 0, 0);
+    }
+
+    public Vector2 Bezier(float t, Vector2 a, Vector2 b, Vector2 c)
+    {
+        var ab = Vector2.Lerp(a, b, t);
+        var bc = Vector2.Lerp(b, c, t);
+        return Vector2.Lerp(ab, bc, t);
+    }
 }
