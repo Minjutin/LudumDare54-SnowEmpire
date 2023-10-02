@@ -504,7 +504,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.48636523, g: 0.70903516, b: 0.8679245, a: 1}
+  m_BackGroundColor: {r: 0.2007832, g: 0.20438677, b: 0.3773585, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2274,7 +2274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1726666248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3326,15 +3326,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2606847875500889554, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.3372549
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2606847875500889554, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor.g
-      value: 0.10980393
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2606847875500889554, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2606847875500889554, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontSizeBase
@@ -3346,7 +3346,7 @@ PrefabInstance:
       objectReference: {fileID: -4133832398973742999, guid: b4e68c3b2099b854f99b839df036ee08, type: 2}
     - target: {fileID: 2606847875500889554, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4283833344
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2606847875500889554, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -3402,15 +3402,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5414979633346940024, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.3372549
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5414979633346940024, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor.g
-      value: 0.10980393
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5414979633346940024, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5414979633346940024, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontSizeBase
@@ -3422,7 +3422,7 @@ PrefabInstance:
       objectReference: {fileID: -4133832398973742999, guid: b4e68c3b2099b854f99b839df036ee08, type: 2}
     - target: {fileID: 5414979633346940024, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4283833344
+      value: 4294638330
       objectReference: {fileID: 0}
     - target: {fileID: 5414979633346940024, guid: dba3a5267904ced46948258058ef541a, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -3621,7 +3621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &4043033162423679934
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ public class BuyManager : MonoBehaviour
                 //Buy tile
                 tile.Buy();
 
+                StartCoroutine(GameManager.GM.DigM.SpawnParticles(tile, true, false));
+
                 CheckWhatCanBeBought();
             }
 
@@ -30,7 +32,6 @@ public class BuyManager : MonoBehaviour
                 StartCoroutine(GameManager.GM.UIM.ShowErrorMessage("You don't have enough toys to buy this land."));
             }
         }
-
     }
 
     public void CheckWhatCanBeBought()

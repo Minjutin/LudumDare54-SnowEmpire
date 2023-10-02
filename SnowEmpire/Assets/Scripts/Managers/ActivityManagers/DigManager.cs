@@ -85,7 +85,7 @@ public class DigManager : MonoBehaviour
 
     }
 
-    IEnumerator SpawnParticles(Tile tile, bool isSnow, bool isSoldier)
+    public IEnumerator SpawnParticles(Tile tile, bool isSnow, bool isSoldier)
     {
         toy.transform.position = new Vector3(-16, 0, 0);
         snowBall.transform.position = new Vector3(-16, 0, 0);

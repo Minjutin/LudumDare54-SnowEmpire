@@ -35,7 +35,7 @@ public class Tutorial : MonoBehaviour
 
         // --------------- BUY LAND ----------------------------------------------------
 
-        EditTutorialText("Good news: You have a toy you can trade. Buy some land with it \n\n<b>by clicking a tile with a head icon</b>.");
+        EditTutorialText("Good news: You have a toy you can trade. Use it to buy some land \n<color=#D40505>by clicking a tile with a head icon</color>.");
 
 
 
@@ -54,7 +54,7 @@ public class Tutorial : MonoBehaviour
 
 
         GameManager.GM.UIM.UpdateTexts();
-        EditTutorialText("You got some snow from buying a land. Use it to build a snow fort \n\n<b>by clicking a tile with a snow ball icon</b>.");
+        EditTutorialText("You got some snow from buying a land. Use it to build a snow fort \n<color=#D40505>by clicking a tile with a snow ball icon</color>.");
 
         yield return new WaitUntil(() => firstTile.builtOn);
 
@@ -76,13 +76,13 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
 
-        EditTutorialText("Enter to a DIG mode so you can secretly dig tunnels around your castle. \n\n<b>Click a DIG-button.</b>");
+        EditTutorialText("Enter to a DIG mode so you can secretly dig tunnels around your castle. \n\n<color=#D40505>Click the DIG-button.</color>");
 
         GameManager.GM.UIM.buttonsOn(true);
 
         yield return new WaitUntil(() => GameManager.GM.currentMode == GameManager.Mode.Dig);
 
-        EditTutorialText("You can only dig snow around castles. Tiles tell you how much snow is left \n<b>IN THE TILES NEXT TO THEM \n(not diagonally).</b>");
+        EditTutorialText("The number on a tile shows the total amount of snow left on the tiles <color=#D40505>surrounding it</color> (NOT on the tile itself)");
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
@@ -97,7 +97,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
 
-        EditTutorialText("Later, you can use them to buy more castles in BUY-mode. \n\n<b>Access buy-mode by clicking a BUY-button.</b>");
+        EditTutorialText("Later, you can use them to buy more castles in BUY-mode. \n\n<color=#D40505>Access buy-mode by clicking the BUY-button.</color>");
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
