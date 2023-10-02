@@ -32,9 +32,9 @@ public class AttackManager : MonoBehaviour
    {
         Vector3 bullyStartPos = bully.transform.position;
 
-        for(float i = 0; i < 1; i=i+Time.deltaTime)
+        for(float i = 0; i < 1; i=i+Time.deltaTime/secondsToKill)
         {
-            yield return new WaitForSeconds(secondsToKill* Time.deltaTime);
+            yield return new WaitForSeconds(Time.deltaTime);
             bully.transform.position = new Vector3(Mathf.Lerp(bullyStartPos.x, GameManager.GM.PlayerM.playerPos.x, i), bullyStartPos.y, 0);
         }
 

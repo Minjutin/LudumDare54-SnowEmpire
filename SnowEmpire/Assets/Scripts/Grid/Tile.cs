@@ -21,18 +21,19 @@ public class Tile : MonoBehaviour
     [Header("UI elements")]
     public TextMeshPro priceText;
     public SpriteRenderer tunnelSprite;
+    public TextMeshPro snowAroundText;
 
     public Sprite ownedSprite;
 
     public List<Tile> nextTiles = new();
 
-    private void Start()
+    private void Awake()
     {
 
         //Get random price and snow amount
         amountOfSnow = Random.Range(1,3) + Random.Range(1, 3);
         price = Random.Range(1,4) + Random.Range(0, 4);
-        priceText.text = price + "t";
+        priceText.text = price + "";
     }
 
     public void ChangeGraphics()
@@ -44,7 +45,14 @@ public class Tile : MonoBehaviour
     public void Buy()
     {
         owned = true;
-        ChangeGraphics();
+        amountOfSnow = 0;
+        ChangeGraphics();     
+        EnablePrice(false);
+    }
+
+    public void BuyWithoutGraphicChange()
+    {
+        owned = true;
         amountOfSnow = 0;
         EnablePrice(false);
     }
@@ -73,7 +81,7 @@ public class Tile : MonoBehaviour
         {
             enabled = false;
         }
-        priceText.enabled = enabled;
+        priceText.gameObject.SetActive(enabled);
         if (price > GameManager.GM.PlayerM.toysOwned)
         {
             priceText.color = Color.red;
@@ -89,5 +97,16 @@ public class Tile : MonoBehaviour
             enabled = false;
         }
         tunnelSprite.enabled = enabled;
+        snowAroundText.enabled = enabled;
+
+        if (enabled)
+        {
+            int neighborSnow = 0;
+            foreach(Tile neighb in nextTiles)
+            {
+                neighborSnow += neighb.amountOfSnow;
+            }
+            snowAroundText.text = neighborSnow + "";
+        }
     }
 }
