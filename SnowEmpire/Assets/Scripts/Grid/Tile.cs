@@ -57,6 +57,7 @@ public class Tile : MonoBehaviour
         amountOfSnow = 0;
         ChangeGraphics();     
         EnablePrice(true);
+        GameManager.GM.AudioM.PlaySnow();
     }
 
     public void BuyWithoutGraphicChange()
@@ -71,14 +72,23 @@ public class Tile : MonoBehaviour
         //Enable tunneled
         tunneled = true;
 
+        GameManager.GM.AudioM.PlaySnow();
+
         //Dig
         amountOfSnow--;
 
         if(amountOfSnow == 0)
         {
             notAvailable.enabled = true;
+
             GameManager.GM.GridM.deadTiles++;
             GameManager.GM.UIM.EditHps();
+
+            if(GameManager.GM.GridM.deadTiles < GameManager.GM.lives)
+            {
+                GameManager.GM.AudioM.PlayGrowl();
+            }
+
         }
     }
 

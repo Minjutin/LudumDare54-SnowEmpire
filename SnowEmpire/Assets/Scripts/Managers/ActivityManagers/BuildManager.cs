@@ -39,7 +39,7 @@ public class BuildManager : MonoBehaviour
     public void SpawnCastle(Tile tile)
     {
 
-
+        GameManager.GM.AudioM.PlaySnow();
         GameObject castle = Instantiate(castlePrefab, tile.transform.position+new Vector3(0,0.4f), Quaternion.identity);
         castle.transform.parent = castles;
         castle.name = "Castle " + tile.x + ", " + tile.y;

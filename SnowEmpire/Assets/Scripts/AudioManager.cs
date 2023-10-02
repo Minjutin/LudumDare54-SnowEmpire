@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
-    [SerializeField] AudioSource snow, growl, music;
+    [SerializeField] AudioSource snow, growl, music, battlemusic, click;
 
     public void PlaySnow()
     {
@@ -20,5 +20,20 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         music.Pause();
+    }
+
+    public void PlayBattleMusic()
+    {
+        battlemusic.Play();
+    }
+
+    public void StopBattleMusic()
+    {
+        battlemusic.Pause();
+    }
+
+    public void PlayClickSound()
+    {
+        click.Play();
     }
 }

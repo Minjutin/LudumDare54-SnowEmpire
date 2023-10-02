@@ -41,7 +41,7 @@ public class StartAnimation : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         thoughtBubble.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         //SCENE 2
         scene1.SetActive(false);
@@ -62,7 +62,7 @@ public class StartAnimation : MonoBehaviour
 
         bubbleDotdotdot.SetActive(true);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         //SCENE 4
         scene3.SetActive(false);
@@ -73,7 +73,7 @@ public class StartAnimation : MonoBehaviour
         bubble42.SetActive(true);
         yield return new WaitForSeconds(1f);
         bubble43.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.4f);
         Skip();
     
     }

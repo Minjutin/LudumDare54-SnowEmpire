@@ -14,6 +14,9 @@ public class AttackManager : MonoBehaviour
     // Start is called before the first frame update
     public void LaunchAttackMode()
     {
+        GameManager.GM.AudioM.StopMusic();
+        GameManager.GM.AudioM.PlayBattleMusic();
+
         GameManager.GM.UIM.LaunchAttackUI();
        
         GameManager.GM.currentMode = GameManager.Mode.ATTACK;

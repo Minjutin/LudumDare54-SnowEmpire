@@ -11,6 +11,8 @@ public class ChangeModeViaButtons : MonoBehaviour
 
     public void Change(int newMode)
     {
+        GameManager.GM.AudioM.PlayClickSound();
+
         GameManager.GM.currentMode = (GameManager.Mode)newMode;
         modeText.text = ((GameManager.Mode)newMode).ToString();
 

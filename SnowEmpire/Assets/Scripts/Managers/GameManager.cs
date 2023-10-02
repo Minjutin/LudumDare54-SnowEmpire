@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public EndManager EndM { get; private set; }
 
+    public AudioManager AudioM { get; private set; }
+
     //Mode
     public Mode currentMode = Mode.Dig;
 
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
         BuyM = FindObjectOfType<BuyManager>();
         AttackM = FindObjectOfType<AttackManager>();
         EndM = FindObjectOfType<EndManager>();
+        AudioM = FindObjectOfType<AudioManager>();
     }
 
 

@@ -23,6 +23,9 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        
+        if(!tutorialSkipped)
+            GameManager.GM.AudioM.PlayClickSound();
 
         EditTutorialText("Unfortunately, your neighbor bully doesn't let you use your backyard for free.");
 
@@ -30,6 +33,7 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        if (!tutorialSkipped) GameManager.GM.AudioM.PlayClickSound();
 
 
 
@@ -75,6 +79,7 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        if (!tutorialSkipped) GameManager.GM.AudioM.PlayClickSound();
 
         EditTutorialText("Enter to a DIG mode so you can secretly dig tunnels around your castle. \n\n<color=#D40505>Click the DIG-button.</color>");
 
@@ -86,26 +91,31 @@ public class Tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        if (!tutorialSkipped) GameManager.GM.AudioM.PlayClickSound();
 
         EditTutorialText("Try not to dig too much in one place, or your tunnel will collapse and the bully will notice.");
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        if (!tutorialSkipped) GameManager.GM.AudioM.PlayClickSound();
 
         EditTutorialText("By digging, you will obtain both snow and lost toys.");
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        if (!tutorialSkipped) GameManager.GM.AudioM.PlayClickSound();
 
         EditTutorialText("Later, you can use them to buy more castles in BUY-mode. \n\n<color=#D40505>Access buy-mode by clicking the BUY-button.</color>");
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        if (!tutorialSkipped) GameManager.GM.AudioM.PlayClickSound();
 
         EditTutorialText("Try to buy as many castles as you can without annoying the bully.");
 
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => Input.anyKeyDown || tutorialSkipped);
+        if (!tutorialSkipped) GameManager.GM.AudioM.PlayClickSound();
 
         SkipTutorial();
     }

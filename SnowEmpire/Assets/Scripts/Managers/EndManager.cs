@@ -14,11 +14,13 @@ public class EndManager : MonoBehaviour
 
     public void Win()
     {
+        GameManager.GM.AudioM.StopBattleMusic();
         imageUi.won.SetActive(true);
     }
 
     public void Lose()
     {
+        GameManager.GM.AudioM.StopBattleMusic();
         imageUi.gameover.SetActive(true);
     }
 }
