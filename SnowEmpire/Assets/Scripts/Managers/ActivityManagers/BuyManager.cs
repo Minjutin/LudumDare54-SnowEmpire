@@ -21,6 +21,8 @@ public class BuyManager : MonoBehaviour
 
                 //Buy tile
                 tile.Buy();
+
+                CheckWhatCanBeBought();
             }
 
             else

@@ -56,7 +56,9 @@ public class GameManager : MonoBehaviour
     {
         GridM.CreateGrid();
         GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height)/2)].Buy();
+        GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2+1)].Buy();
         BuildM.SpawnCastle(GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2)]);
+        BuildM.SpawnCastle(GridM.tileGrid[(1, (int)Mathf.Ceil(GridM.height) / 2+1)]);
     }
 
     private void Update()

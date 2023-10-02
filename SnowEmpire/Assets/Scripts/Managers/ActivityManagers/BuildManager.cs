@@ -9,6 +9,7 @@ public class BuildManager : MonoBehaviour
     public Transform castles;
 
     [SerializeField] int castlePrice = 5;
+    [SerializeField] Sprite firstCastle;
 
   
     public void TryToSpawnSnowCastle(Tile tile)
@@ -34,9 +35,16 @@ public class BuildManager : MonoBehaviour
     //You can only build if there is a tunnel or caste in next to it.
     public void SpawnCastle(Tile tile)
     {
+
+
         GameObject castle = Instantiate(castlePrefab, tile.transform.position+new Vector3(0,0.4f), Quaternion.identity);
         castle.transform.parent = castles;
         castle.name = "Castle " + tile.x + ", " + tile.y;
+
+        if (GameManager.GM.PlayerM.snowOwned < 1)
+        {
+            castle.GetComponent<SpriteRenderer>().enabled = false;
+        }
 
         tile.builtOn = true;
     }

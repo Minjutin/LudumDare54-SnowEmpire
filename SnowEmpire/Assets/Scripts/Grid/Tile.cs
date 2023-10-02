@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
     {
 
         //Get random price and snow amount
-        amountOfSnow = Random.Range(1,4) + Random.Range(1, 4);
+        amountOfSnow = Random.Range(1,3) + Random.Range(1, 3);
         price = Random.Range(1,4) + Random.Range(0, 4);
         priceText.text = price + "t";
     }
@@ -74,6 +74,13 @@ public class Tile : MonoBehaviour
             enabled = false;
         }
         priceText.enabled = enabled;
+        if (price > GameManager.GM.PlayerM.toysOwned)
+        {
+            priceText.color = Color.red;
+        }
+        else
+            priceText.color = Color.green;
+
     }
 
     public void EnableCanBeTunneled(bool enabled)

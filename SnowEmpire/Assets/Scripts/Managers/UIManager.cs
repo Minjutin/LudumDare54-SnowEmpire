@@ -14,8 +14,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTexts()
     {
-        snowAmount.text = ": "+GameManager.GM.PlayerM.snowOwned;
-        toyAmount.text = ": "+GameManager.GM.PlayerM.toysOwned;
+        snowAmount.text = ""+GameManager.GM.PlayerM.snowOwned;
+        toyAmount.text = ""+GameManager.GM.PlayerM.toysOwned;
     }
 
     public IEnumerator ShowErrorMessage(string error)

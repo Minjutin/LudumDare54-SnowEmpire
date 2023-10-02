@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7764771867792361301}
   - component: {fileID: 6443241334595785631}
+  - component: {fileID: 8335152968665094162}
   m_Layer: 0
   m_Name: SnowBuilding
   m_TagString: Untagged
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8335152968665094162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9191117658965281467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4088f7fad66a9e04fa6469be3ace341f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
