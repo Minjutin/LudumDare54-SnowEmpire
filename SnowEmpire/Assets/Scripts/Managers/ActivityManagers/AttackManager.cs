@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackManager : MonoBehaviour
 {
-    [SerializeField]GameObject bully;
+    public GameObject bully, snowballPrefab;
 
     [SerializeField] float secondsToKill;
 
@@ -26,6 +26,11 @@ public class AttackManager : MonoBehaviour
         }
 
         StartCoroutine(Launch());
+
+        foreach(Castle castle in GameManager.GM.BuildM.castleList)
+        {
+            StartCoroutine(castle.Shoot());
+        }
     }
 
    IEnumerator Launch()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuyManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+
     public void TryToBuy(Tile tile)
     {
 

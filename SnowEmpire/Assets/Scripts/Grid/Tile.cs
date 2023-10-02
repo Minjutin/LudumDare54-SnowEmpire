@@ -107,6 +107,11 @@ public class Tile : MonoBehaviour
                 neighborSnow += neighb.amountOfSnow;
             }
             snowAroundText.text = neighborSnow + "";
+
+            if (neighborSnow < 6)
+                tunnelSprite.color = Color.yellow;
+            if (neighborSnow < 4)
+                tunnelSprite.color = Color.red;
         }
     }
 }

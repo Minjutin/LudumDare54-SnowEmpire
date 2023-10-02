@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
+    public List<Castle> castleList = new();
 
     public GameObject castlePrefab;
     public Transform castles;
@@ -40,6 +41,7 @@ public class BuildManager : MonoBehaviour
         GameObject castle = Instantiate(castlePrefab, tile.transform.position+new Vector3(0,0.4f), Quaternion.identity);
         castle.transform.parent = castles;
         castle.name = "Castle " + tile.x + ", " + tile.y;
+        castleList.Add(castle.GetComponent<Castle>());
 
         if (GameManager.GM.PlayerM.snowOwned < 1)
         {
